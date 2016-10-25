@@ -1,0 +1,11 @@
+body {
+	background-image: url(../images/deathstar.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.header-style {
+	font-family: 'Russo One', sans-serif;
+	color: white;
+	text-align: center;
+}
