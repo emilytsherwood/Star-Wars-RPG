@@ -9,3 +9,49 @@ body {
 	color: white;
 	text-align: center;
 }
+
+div.img {
+	margin: 2px;
+	margin-right: 10px;
+	border: 2px solid #ccc;
+	float: left;
+	width: 110px;
+}
+
+figcaption {
+	font-family: 'Russo One', sans-serif;
+	color: white;
+	text-align: center;
+}
+
+div.caption-HP {
+	font-family: 'Russo One', sans-serif;
+	padding: 5px;
+	text-align: center;
+	color: white;
+}
+
+h3 {
+	font-family: 'Russo One', sans-serif;
+	color: white;
+	display: block;
+	clear: both;
+	margin-left: 138px;
+	margin-top: 20px;
+}
+
+h2 {
+	font-family: 'Russo One', sans-serif;
+	color: white;
+	display: block;
+	clear: both;
+}
+
+.attack {
+	margin-left: 5px;
+}
+
+.fight {
+	margin-bottom: 0;
+}
+

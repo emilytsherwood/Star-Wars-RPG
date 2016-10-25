@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css">  -->
 	<meta charset="UTF-8">
 	<title>Star Wars RPG</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+	<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
     
 </head>
 <body>
 	<header class="header-style">
 		<h1>Star Wars RPG</h1>
 	</header>
-	<img src="assets/images/princessleia.jpg" alt="Princess Leia" width="130px" height="178px">
-	<img src="assets/images/jarjar.jpg" alt="Jar Jar" width="130px" height="178px">
-	<img src="assets/images/emperor.jpg" alt="Emperor" width="130px" height="178px">
-	<img src="assets/images/yoda.jpg" alt="Yoda" width="130px" height="178px">
+<!-- Character section -->
+	<div class="img">
+		<figcaption>Darth Vader</figcaption>
+		<img src="assets/images/darthvaderlego.png" alt="Darth Vader" width="115px">
+		<div class="caption-HP">120</div>
+	</div>
+
+	<div class="img">
+		<figcaption>Yoda</figcaption>
+			<img src="assets/images/yodalego.png" alt="Yoda" width="115px">
+			<div class="caption-HP">180</div>
+	</div>
+
+	<div class="img">
+		<figcaption>Kylo Ren</figcaption>
+			<img src="assets/images/kylorenlego.png" alt="Kylo Ren" width="115px">
+			<div class="caption-HP">100</div>
+	</div>
+
+	<div class="img">
+		<figcaption>Princess Leia</figcaption>
+		<img src="assets/images/princessleialego.png" alt="Princess Leia" width="115px">
+		<div class="caption-HP">150</div>
+	</div>
+<h3>Choose Your Character</h3>
+<!-- End of character section  -->
+<!-- Other sections -->
+<br>
+<br>
+<h2>Enemies Available to Attack</h2>
+<h2 class="fight">Fight!</h2>
+	<button class="attack">Attack!</button>
+<h2>Defender</h2>
+
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
