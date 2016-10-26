@@ -22,13 +22,40 @@ var princessLeia = {
 	counterAttackPower: 11,
 }
 
+//When a character is chosen, the other 3 get put into enemies
+//Is there a for loop/function to do this more compactly?
 $(document).ready(function(){
+});
+
+function characterChoice(){
 	$('.darth').click(function(){
 		$('.yoda').appendTo('.enemiesSection')
 		$('.leia').appendTo('.enemiesSection')
 		$('.kylo').appendTo('.enemiesSection')
-})
-}); //If .darth is clicked, Darth div moves to enemies section
+	})
+
+	$('.yoda').click(function(){
+		$('.darth').appendTo('.enemiesSection')
+		$('.leia').appendTo('.enemiesSection')
+		$('.kylo').appendTo('.enemiesSection')
+	});
+
+	$('.kylo').click(function(){
+		$('.darth').appendTo('.enemiesSection')
+		$('.leia').appendTo('.enemiesSection')
+		$('.yoda').appendTo('.enemiesSection')
+	});
+
+	$('.leia').click(function(){
+		$('.darth').appendTo('.enemiesSection')
+		$('.kylo').appendTo('.enemiesSection')
+		$('.yoda').appendTo('.enemiesSection')
+	});
+};
+characterChoice();
+
+
+
 
 
 
