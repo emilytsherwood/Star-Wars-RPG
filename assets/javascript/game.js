@@ -27,8 +27,8 @@ var princessLeia = {
 //When a character is chosen, the other 3 get put into enemies
 //Is there a for loop/function to do this more compactly?
 $(document).ready(function(){
-
-// function characterClicks(){
+function characterChoice (){
+//When a character is clicked, the classes change accordingly and the divs move
 	$('.characterSection').on('click','.darth',function(){
 		$('.yoda, .kylo, .leia, .darth').removeClass('unassigned-character');
 		$('.yoda, .kylo, .leia').addClass('enemy-character');
@@ -49,10 +49,41 @@ $(document).ready(function(){
 	});
 	$('.characterSection').on('click','.leia',function(){
 		$('.yoda, .kylo, .darth, .leia').removeClass('unassigned-character');
-		$('.leia').addClass('selected-character');
 		$('.yoda .kylo .darth').addClass('enemy-character');
+		$('.leia').addClass('selected-character');
 		$('.darth, .yoda, .kylo').appendTo('.enemiesSection');
 	});
+};
+characterChoice();
+
+function enemyChoice(){
+//Choosing your enemy and moving that character into defender section
+	$('.enemiesSection').on('click','.darth',function(){
+		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
+		$('.yoda, .kylo, .leia').addClass('waiting-enemies');
+		$('.darth').addClass('current-enemy');
+		$('.darth').appendTo('.defenderSection');
+	});
+	$('.enemiesSection').on('click','.yoda',function(){
+		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
+		$('.darth, .kylo, .leia').addClass('waiting-enemies');
+		$('.yoda').addClass('current-enemy');
+		$('.yoda').appendTo('.defenderSection');
+	});
+	$('.enemiesSection').on('click','.kylo',function(){
+		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
+		$('.darth, .yoda, .leia').addClass('waiting-enemies');
+		$('.kylo').addClass('current-enemy');
+		$('.kylo').appendTo('.defenderSection');
+	});
+	$('.enemiesSection').on('click','.leia',function(){
+		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
+		$('.darth, .yoda, .kylo').addClass('waiting-enemies');
+		$('.leia').addClass('current-enemy');
+		$('.leia').appendTo('.defenderSection');
+	});
+};
+enemyChoice();
 
 });
 
