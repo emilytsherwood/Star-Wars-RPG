@@ -29,88 +29,98 @@ var currentEnemy = darthVader, yoda, kyloRen, princessLeia;
 //When a character is chosen, the other 3 get put into enemies
 //Is there a for loop/function to do this more compactly?
 $(document).ready(function(){
-function characterChoice (){
+
 //When a character is clicked, the classes change accordingly and the divs move
 	$('.characterSection').on('click','.darth',function(){
 		$('.yoda, .kylo, .leia, .darth').removeClass('unassigned-character');
 		$('.yoda, .kylo, .leia').addClass('enemy-character');
 		$('.darth').addClass('selected-character');
 		$('.yoda, .kylo, .leia').appendTo('.enemiesSection');
+		darthVader = '.darth', currentCharacter;
 });
 	$('.characterSection').on('click','.yoda',function(){
 		$('.darth, .kylo, .leia .yoda').removeClass('unassigned-character');
 		$('.darth, .kylo, .leia').addClass('enemy-character');
 		$('.yoda').addClass('selected-character');
 		$('.darth, .kylo, .leia').appendTo('.enemiesSection');
+		yoda = '.yoda', currentCharacter;
 });
 	$('.characterSection').on('click','.kylo',function(){
 		$('.yoda, .darth, .leia, .kylo').removeClass('unassigned-character');
 		$('.yoda .darth .leia').addClass('.enemy-character');
 		$('.kylo').addClass('selected-character');
 		$('.darth, .yoda, .leia').appendTo('.enemiesSection');
+		kyloRen = '.kylo', currentCharacter;
 	});
 	$('.characterSection').on('click','.leia',function(){
 		$('.yoda, .kylo, .darth, .leia').removeClass('unassigned-character');
 		$('.yoda .kylo .darth').addClass('enemy-character');
 		$('.leia').addClass('selected-character');
 		$('.darth, .yoda, .kylo').appendTo('.enemiesSection');
+		princessLeia = '.leia', currentCharacter;
 	});
-};
-characterChoice();
 
-function enemyChoice(){
+
 //Choosing your enemy and moving that character into defender section
-	$('.enemiesSection').on('click','.darth',function(){
+$('.enemiesSection').on('click','.darth',function(){
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.yoda, .kylo, .leia').addClass('waiting-enemies');
 		$('.darth').addClass('current-enemy1');
 		$('.current-enemy1').appendTo('.defenderSection');
+		darthVader = '.darth', currentEnemy;
 	});
+
 	$('.enemiesSection').on('click','.yoda',function(){
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.darth, .kylo, .leia').addClass('waiting-enemies');
 		$('.yoda').addClass('current-enemy2');
 		$('.current-enemy2').appendTo('.defenderSection');
+		yoda = '.yoda', currentEnemy;
 	});
-	$('.enemiesSection').on('click','.kylo',function(){
+
+	$('.enemiesSection').on('click','.kylo',function(){	
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.darth, .yoda, .leia').addClass('waiting-enemies');
 		$('.kylo').addClass('current-enemy3');
 		$('.current-enemy3').appendTo('.defenderSection');
+		kyloRen = '.kylo', currentEnemy;
 	});
+
 	$('.enemiesSection').on('click','.leia',function(){
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.darth, .yoda, .kylo').addClass('waiting-enemies');
 		$('.leia').addClass('current-enemy4');
 		$('.current-enemy4').appendTo('.defenderSection');
+		princessLeia = '.leia', currentEnemy;
 	});
-};
-enemyChoice();
 
-//If healthPoints equal 0, remove from div
+
 $('.attack').on('click', function(){
-	if (darth.healthPoints <= 0);
+	currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
+	currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
+	$('.caption-HP').html(currentEnemy.healthPoints);
+	$('.caption-HP').html(currentCharacter.healthPoints);
+});
+
+
+//If healthPoints equal 0, remove from defenderSection div
+$('.attack').on('click', function(){
+	if (currentCharacter.healthPoints <= 0);
 		$('current-enemy1').remove();
 });
 $('.attack').on('click', function(){
-	if (yoda.healthPoints <= 0);
+	if (currentCharacter.healthPoints <= 0);
 		$('current-enemy2').remove();
 });
 $('.attack').on('click', function(){
-	if (kylo.healthPoints <= 0);
+	if (currentCharacter.healthPoints <= 0);
 		$('current-enemy3').remove();
 });
 $('.attack').on('click', function(){
-	if (leia.healthPoints <= 0);
+	if (currentCharacter.healthPoints <= 0);
 		$('current-enemy4').remove();
 });
 
-$('.attack').on('click', function(){
-	//Call the various functions that affect scoring
-// function scores(){
-		currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
-		currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
-	});
 });
 
 
