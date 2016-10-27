@@ -22,7 +22,9 @@ var princessLeia = {
 	counterAttackPower: 11,
 }
 
-var characters = ['darthVader', 'kyloRen', 'yoda', 'princessLeia'];
+var currentCharacter = darthVader, yoda, kyloRen, princessLeia;
+var currentEnemy = darthVader, yoda, kyloRen, princessLeia;
+
 
 //When a character is chosen, the other 3 get put into enemies
 //Is there a for loop/function to do this more compactly?
@@ -56,33 +58,31 @@ function characterChoice (){
 };
 characterChoice();
 
-var currentEnemy = '';
 function enemyChoice(){
 //Choosing your enemy and moving that character into defender section
 	$('.enemiesSection').on('click','.darth',function(){
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.yoda, .kylo, .leia').addClass('waiting-enemies');
 		$('.darth').addClass('current-enemy1');
-		currentEnemy = $('.current-enemy1').appendTo('.defenderSection');
+		$('.current-enemy1').appendTo('.defenderSection');
 	});
 	$('.enemiesSection').on('click','.yoda',function(){
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.darth, .kylo, .leia').addClass('waiting-enemies');
 		$('.yoda').addClass('current-enemy2');
-		// if ($('.defenderSection').is(':empty')){
-		currentEnemy = $('.current-enemy2').appendTo('.defenderSection');
+		$('.current-enemy2').appendTo('.defenderSection');
 	});
 	$('.enemiesSection').on('click','.kylo',function(){
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.darth, .yoda, .leia').addClass('waiting-enemies');
 		$('.kylo').addClass('current-enemy3');
-		currentEnemy = $('.current-enemy3').appendTo('.defenderSection');
+		$('.current-enemy3').appendTo('.defenderSection');
 	});
 	$('.enemiesSection').on('click','.leia',function(){
 		$('.darth, .yoda, .kylo, .leia').removeClass('enemy-character');
 		$('.darth, .yoda, .kylo').addClass('waiting-enemies');
 		$('.leia').addClass('current-enemy4');
-		currentEnemy = $('.current-enemy4').appendTo('.defenderSection');
+		$('.current-enemy4').appendTo('.defenderSection');
 	});
 };
 enemyChoice();
@@ -100,20 +100,19 @@ $('.attack').on('click', function(){
 	if (kylo.healthPoints <= 0);
 		$('current-enemy3').remove();
 });
-$('attack').on('click', function(){
+$('.attack').on('click', function(){
 	if (leia.healthPoints <= 0);
 		$('current-enemy4').remove();
 });
 
-function scores(){
-$('attack').on('click', function(){
-	if ($('.darth').is('.selected-character')){
-		darthVader.healthPoints - currentEnemy
-	}
-}
-}
-
+$('.attack').on('click', function(){
+	//Call the various functions that affect scoring
+// function scores(){
+		currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
+		currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
+	});
 });
+
 
 
 
