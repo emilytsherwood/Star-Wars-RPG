@@ -54,6 +54,7 @@ $('#characterSection').on('click', '#darth', function() {
     $('#yoda, #kylo, #leia').addClass('enemy-character');
     $('#darth').addClass('selected-character');
     $('#yoda, #kylo, #leia').appendTo('#enemiesSection');
+    currentCharacter = starWars.darth;
 });
 });
 $('#characterSection').on('click', '#yoda', function() {
@@ -61,18 +62,21 @@ $('#characterSection').on('click', '#yoda', function() {
     $('#darth, #kylo, #leia').addClass('enemy-character');
     $('#yoda').addClass('selected-character');
     $('#darth, #kylo, #leia').appendTo('#enemiesSection');
+    currentCharacter = starWars.yoda;
 });
 $('#characterSection').on('click', '#kylo', function() {
     $('#yoda, #darth, #leia, #kylo').removeClass('unassigned-character');
     $('#yoda #darth #leia').addClass('enemy-character');
     $('#kylo').addClass('selected-character');
     $('#darth, #yoda, #leia').appendTo('#enemiesSection');
+    currentCharacter = starWars.kylo;
 });
 $('#characterSection').on('click', '#leia', function() {
     $('#yoda, #kylo, #darth, #leia').removeClass('unassigned-character');
     $('#yoda #kylo #darth').addClass('enemy-character');
     $('#leia').addClass('selected-character');
     $('#darth, #yoda, #kylo').appendTo('#enemiesSection');
+    currentCharacter = starWars.leia;
 });
 
 
@@ -82,6 +86,7 @@ $('#enemiesSection').on('click', '#darth', function() {
     $('#yoda, #kylo, #leia').addClass('waiting-enemies');
     $('#darth').addClass('current-enemy');
     $('.current-enemy').appendTo('#defenderSection');
+    currentEnemy = starWars.darth;
 });
 
 $('#enemiesSection').on('click', '#yoda', function() {
@@ -89,6 +94,7 @@ $('#enemiesSection').on('click', '#yoda', function() {
     $('#darth, #kylo, #leia').addClass('waiting-enemies');
     $('#yoda').addClass('current-enemy');
     $('.current-enemy').appendTo('#defenderSection');
+    currentEnemy = starWars.yoda;
 });
 
 $('#enemiesSection').on('click', '#kylo', function() {
@@ -96,6 +102,7 @@ $('#enemiesSection').on('click', '#kylo', function() {
     $('#darth, #yoda, #leia').addClass('waiting-enemies');
     $('#kylo').addClass('current-enemy');
     $('.current-enemy').appendTo('#defenderSection');
+    currentEnemy = starWars.kylo;
 });
 
 $('#enemiesSection').on('click', '#leia', function() {
@@ -103,20 +110,17 @@ $('#enemiesSection').on('click', '#leia', function() {
     $('#darth, #yoda, #kylo').addClass('waiting-enemies');
     $('#leia').addClass('current-enemy');
     $('.current-enemy').appendTo('#defenderSection');
+    currentEnemy = starWars.leia;
 });
 
-// if ($('#.darth'== 'selected-character')
-// 	currentCharacter = '#darth';
-// })
-
 $('#attack').on('click', function() {
-    currentCharacter.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
-    currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
-    $('.caption-HP').html(currentEnemy.healthPoints - currentCharacter.attackPower);
-    $('.caption-HP').html(currentCharacter.healthPoints - currentEnemy.counterAttackPower);
+    starWars.currentCharacter.healthPoints = starWars.currentEnemy.healthPoints - starWars.currentCharacter.attackPower;
+    starWars.currentCharacter.healthPoints = starWars.currentCharacter.healthPoints - starWars.currentEnemy.counterAttackPower;
+    $('.caption-HP').html(starWars.currentEnemy.healthPoints - starWars.currentCharacter.attackPower);
+    $('.caption-HP').html(starWars.currentCharacter.healthPoints - starWars.currentEnemy.counterAttackPower);
     //If healthPoints equal 0, remove from defenderSection div
-    if (currentEnemy.healthPoints <= 0);
-    $('#defenderSection').remove(currentEnemy);
+    if (starWars.currentEnemy.healthPoints <= 0);
+    $('#defenderSection').remove(starWars.currentEnemy);
 });
 
 
