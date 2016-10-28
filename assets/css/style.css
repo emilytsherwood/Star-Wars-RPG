@@ -10,7 +10,39 @@ body {
 	text-align: center;
 }
 
-div.img {
+div.unassigned-character {
+	margin-right: 10px;
+	margin-bottom: 5px;
+	border: 2px solid #ccc;
+	float: left;
+	width: 110px;
+}
+
+.enemy-character {
+	margin-right: 10px;
+	margin-bottom: 5px;
+	border: 2px solid #ccc;
+	float: left;
+	width: 110px;
+}
+
+.selected-character {
+	margin-right: 10px;
+	margin-bottom: 5px;
+	border: 2px solid #ccc;
+	float: left;
+	width: 110px;
+}
+
+.current-enemy {
+	margin-right: 10px;
+	margin-bottom: 5px;
+	border: 2px solid #ccc;
+	float: left;
+	width: 110px;
+}
+
+.waiting-enemies {
 	margin-right: 10px;
 	margin-bottom: 5px;
 	border: 2px solid #ccc;
@@ -46,11 +78,11 @@ h2 {
 	margin-bottom: 5px;
 }
 
-.attack {
+#attack {
 	margin-left: 5px;
 }
 
-.fight {
+#fightSection {
 	margin-bottom: 0;
 }
 
