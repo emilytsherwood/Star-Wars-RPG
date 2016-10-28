@@ -33,17 +33,24 @@ var starWars={
     	counterAttackPower: 11,
 },
 };
-//Getting the healthPoints to display under the character
-$('#darth').find('.caption-HP').html(starWars.darth.healthPoints);
-$('#yoda').find('.caption-HP').html(starWars.yoda.healthPoints);
-$('#kylo').find('.caption-HP').html(starWars.kylo.healthPoints);
-$('#leia').find('.caption-HP').html(starWars.leia.healthPoints);
 
+var darthCharacter = $('#darth');
+var yodaCharacter = $('#yoda');
+var kyloCharacter = $('#kylo');
+var leiaCharacter = $('#leia');
+
+var currentCharacter = '.selected-character';
+var currentEnemy = '.current-enemy';
+
+//Getting the healthPoints to display under the character
+$(darthCharacter).find('.caption-HP').html(starWars.darth.healthPoints);
+$(yodaCharacter).find('.caption-HP').html(starWars.yoda.healthPoints);
+$(kyloCharacter).find('.caption-HP').html(starWars.kylo.healthPoints);
+$(leiaCharacter).find('.caption-HP').html(starWars.leia.healthPoints);
 //When a character is chosen, the other 3 get put into enemies
 
-//When a character is clicked, the classes change accordingly and the divs move
 $('#characterSection').on('click', '#darth', function() {
-    $('#yoda, #kylo, #leia, #darth').removeClass('unassigned-character');
+    $('#darth, #kylo, #leia #yoda').removeClass('unassigned-character');
     $('#yoda, #kylo, #leia').addClass('enemy-character');
     $('#darth').addClass('selected-character');
     $('#yoda, #kylo, #leia').appendTo('#enemiesSection');
@@ -98,15 +105,18 @@ $('#enemiesSection').on('click', '#leia', function() {
     $('.current-enemy').appendTo('#defenderSection');
 });
 
-//Attack button
-$('.attack').on('click', function() {
-    '.currentEnemy'.healthPoints = '.currentEnemy'.healthPoints - '.currentCharacter'.attackPower;
-    '.currentCharacter'.healthPoints = '.currentCharacter'.healthPoints - '.currentEnemy'.counterAttackPower;
-    $('.caption-HP').html('.currentEnemy'.healthPoints - '.currentCharacter'.attackPower);
-    $('.caption-HP').html('.currentCharacter'.healthPoints - '.currentEnemy'.counterAttackPower);
+// if ($('#.darth'== 'selected-character')
+// 	currentCharacter = '#darth';
+// })
+
+$('#attack').on('click', function() {
+    currentCharacter.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
+    currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
+    $('.caption-HP').html(currentEnemy.healthPoints - currentCharacter.attackPower);
+    $('.caption-HP').html(currentCharacter.healthPoints - currentEnemy.counterAttackPower);
     //If healthPoints equal 0, remove from defenderSection div
-    if ('.currentEnemy'.healthPoints <= 0);
-    $('.defenderSection').remove('.currentEnemy');
+    if (currentEnemy.healthPoints <= 0);
+    $('#defenderSection').remove(currentEnemy);
 });
 
 
