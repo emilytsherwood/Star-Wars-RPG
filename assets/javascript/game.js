@@ -31,14 +31,13 @@ var currentEnemy = darthVader,
 $(document).ready(function() {
 
     //When a character is clicked, the classes change accordingly and the divs move
-    $('.characterSection').on('click', '.darth', function() {
-        $('.yoda, .kylo, .leia, .darth').removeClass('unassigned-character');
-        $('.yoda, .kylo, .leia').addClass('enemy-character');
-        $('.darth').addClass('selected-character');
-        $('.yoda, .kylo, .leia').appendTo('.enemiesSection');
-        if ($('.darth').is('selected-character'))
-            darthVader = '.darth', currentCharacter;
-    });
+$('.characterSection').on('click', '.darth', function() {
+    $('.yoda, .kylo, .leia, .darth').removeClass('unassigned-character');
+    $('.yoda, .kylo, .leia').addClass('enemy-character');
+    $('.darth').addClass('selected-character');
+    $('.yoda, .kylo, .leia').appendTo('.enemiesSection');
+    darthVader = '.darth', currentCharacter;
+});
 });
 $('.characterSection').on('click', '.yoda', function() {
     $('.darth, .kylo, .leia .yoda').removeClass('unassigned-character');
