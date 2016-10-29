@@ -136,7 +136,7 @@ $(document).ready(function() {
   		$('#attack').html('Reset');
   		reset();
   	};
-
+  	//Reset function
 	function reset() {
 		location.reload();
 	};
