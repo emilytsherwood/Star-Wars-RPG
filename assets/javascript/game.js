@@ -6,6 +6,7 @@ $(document).ready(function() {
 			image: '../images/darthvaderlego.png',
 	    	healthPoints: 120,
 	   		attackPower: 9,
+	   		attackUp: 9,
 	    	counterAttackPower: 6,
 	},
 
@@ -14,6 +15,7 @@ $(document).ready(function() {
 			image: '../images/yodalego.png',
 	    	healthPoints: 180,
 	    	attackPower: 12,
+	    	attackUp: 9,
 	    	counterAttackPower: 10,
 	},
 
@@ -22,6 +24,7 @@ $(document).ready(function() {
 			image: '../images/kyloren.png',
 	    	healthPoints: 100,
 	    	attackPower: 8,
+	    	attackUp: 8,
 	    	counterAttackPower: 10,
 	},
 
@@ -30,6 +33,7 @@ $(document).ready(function() {
 			image: '../images/princessleialego.png',
 	    	healthPoints: 150,
 	   		attackPower: 10,
+	   		attackUp: 10,
 	    	counterAttackPower: 11,
 	},
 };
@@ -111,10 +115,12 @@ $(document).ready(function() {
 	$('#attack').on('click', function() {
 	    currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
 	    currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
+	    currentCharacter.attackPower += currentCharacter.attackUp; //will add attackUP each click to increase power
 	    $('.caption-HP', '#defenderSection').html(currentEnemy.healthPoints);
 	    $('.caption-HP', '#characterSection').html(currentCharacter.healthPoints);
 	    $('.attack-message').html("You attacked " + currentEnemy.name + " for " + currentCharacter.attackPower);
 		$('.counter-message').html("Counter attacked by " + currentEnemy.name + " for " + currentEnemy.counterAttackPower);
+
 //End of game alerts
 	if (currentCharacter.healthPoints <= 0) {
         alert ('Game Over!');
@@ -122,10 +128,14 @@ $(document).ready(function() {
     if (currentEnemy.healthPoints <= 0) {
         alert ('Pick a New Defender!');
         $('#defenderSection').empty();
-    }
+    };
 
-    });
+  	if($('#enemiesSection div').length === 0) {
+  		alert ('CONGRATS! You have defeated all your enemies!')
+  	};
+  });
 });
+
 
 
 
