@@ -112,14 +112,19 @@ $(document).ready(function() {
 	});
 
 	$('#attack').on('click', function() {
-		alert ("attack!");
+		// alert ('Attack!!!!');
 	    currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
 	    currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
 	    $('.caption-HP', '#defenderSection').html(currentEnemy.healthPoints);
 	    $('.caption-HP', '#characterSection').html(currentCharacter.healthPoints);
-	    // $('.caption-HP').html(currentEnemy.healthPoints - currentCharacter.attackPower);
-	    //If healthPoints equal 0, remove from defenderSection div
 	});
+
+	if (currentCharacter.healthPoints <= 0) {
+		alert ('Game Over!');
+	}
+	else {
+		alert ('Pick a New Defender!');
+	}
 });
 
 
