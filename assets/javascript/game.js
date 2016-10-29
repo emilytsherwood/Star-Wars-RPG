@@ -112,6 +112,7 @@ $(document).ready(function() {
 	    currentEnemy = starWars.leia;
 	});
 
+	//Attack button events
 	$('#attack').on('click', function() {
 	    currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
 	    currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
@@ -121,7 +122,7 @@ $(document).ready(function() {
 	    $('.attack-message').html("You attacked " + currentEnemy.name + " for " + currentCharacter.attackPower);
 		$('.counter-message').html("Counter attacked by " + currentEnemy.name + " for " + currentEnemy.counterAttackPower);
 
-//End of game alerts
+	//End of game alerts
 	if (currentCharacter.healthPoints <= 0) {
         alert ('Game Over!');
     }
@@ -132,7 +133,14 @@ $(document).ready(function() {
 
   	if($('#enemiesSection div').length === 0) {
   		alert ('CONGRATS! You have defeated all your enemies!')
+  		$('#attack').html('Reset');
+  		reset();
   	};
+
+	function reset() {
+		location.reload();
+	};
+
   });
 });
 
