@@ -47,8 +47,8 @@ $(document).ready(function() {
 	$(yodaCharacter).find('.caption-HP').html(starWars.yoda.healthPoints);
 	$(kyloCharacter).find('.caption-HP').html(starWars.kylo.healthPoints);
 	$(leiaCharacter).find('.caption-HP').html(starWars.leia.healthPoints);
-	//When a character is chosen, the other 3 get put into enemies
 
+	//When a character is chosen, the other 3 get put into enemies
 	$('#characterSection').on('click', '#darth', function() {
 	    $('#darth, #kylo, #leia, #yoda').removeClass('unassigned-character');
 	    $('#yoda, #kylo, #leia').addClass('enemy-character');
@@ -63,7 +63,6 @@ $(document).ready(function() {
 	    $('#darth, #kylo, #leia').appendTo('#enemiesSection');
 	    currentCharacter = starWars.yoda;
 	});
-
 	$('#characterSection').on('click', '#kylo', function() {
 	    $('#darth, #kylo, #leia, #yoda').removeClass('unassigned-character');
 	    $('#darth, #yoda, #leia').addClass('enemy-character');
@@ -87,7 +86,6 @@ $(document).ready(function() {
 	    $('.current-enemy').appendTo('#defenderSection');
 	    currentEnemy = starWars.darth;
 	});
-
 	$('#enemiesSection').on('click', '#yoda', function() {
 	    $('#darth, #yoda, #kylo, #leia').removeClass('enemy-character');
 	    $('#darth, #kylo, #leia').addClass('waiting-enemies');
@@ -95,7 +93,6 @@ $(document).ready(function() {
 	    $('.current-enemy').appendTo('#defenderSection');
 	    currentEnemy = starWars.yoda;
 	});
-
 	$('#enemiesSection').on('click', '#kylo', function() {
 	    $('#darth, #yoda, #kylo, #leia').removeClass('enemy-character');
 	    $('#darth, #yoda, #leia').addClass('waiting-enemies');
@@ -103,7 +100,6 @@ $(document).ready(function() {
 	    $('.current-enemy').appendTo('#defenderSection');
 	    currentEnemy = starWars.kylo;
 	});
-
 	$('#enemiesSection').on('click', '#leia', function() {
 	    $('#darth, #yoda, #kylo, #leia').removeClass('enemy-character');
 	    $('#darth, #yoda, #kylo').addClass('waiting-enemies');
@@ -113,12 +109,13 @@ $(document).ready(function() {
 	});
 
 	$('#attack').on('click', function() {
-		('Attack!!!!');
 	    currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
 	    currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
 	    $('.caption-HP', '#defenderSection').html(currentEnemy.healthPoints);
 	    $('.caption-HP', '#characterSection').html(currentCharacter.healthPoints);
-
+	    $('.attack-message').html("You attacked " + currentEnemy.name + " for " + currentCharacter.attackPower);
+		$('.counter-message').html("Counter attacked by " + currentEnemy.name + " for " + currentEnemy.counterAttackPower);
+//End of game alerts
 	if (currentCharacter.healthPoints <= 0) {
         alert ('Game Over!');
     }
