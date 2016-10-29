@@ -50,31 +50,32 @@ $(document).ready(function() {
 	//When a character is chosen, the other 3 get put into enemies
 
 	$('#characterSection').on('click', '#darth', function() {
-	    $('#darth, #kylo, #leia #yoda').removeClass('unassigned-character');
+	    $('#darth, #kylo, #leia, #yoda').removeClass('unassigned-character');
 	    $('#yoda, #kylo, #leia').addClass('enemy-character');
 	    $('#darth').addClass('selected-character');
 	    $('#yoda, #kylo, #leia').appendTo('#enemiesSection');
 	    currentCharacter = starWars.darth;
 	});
 	$('#characterSection').on('click', '#yoda', function() {
-	    $('#darth, #kylo, #leia #yoda').removeClass('unassigned-character');
+	    $('#darth, #kylo, #leia, #yoda').removeClass('unassigned-character');
 	    $('#darth, #kylo, #leia').addClass('enemy-character');
 	    $('#yoda').addClass('selected-character');
 	    $('#darth, #kylo, #leia').appendTo('#enemiesSection');
 	    currentCharacter = starWars.yoda;
 	});
+
 	$('#characterSection').on('click', '#kylo', function() {
-	    $('#yoda, #darth, #leia, #kylo').removeClass('unassigned-character');
-	    $('#yoda #darth #leia').addClass('enemy-character');
+	    $('#darth, #kylo, #leia, #yoda').removeClass('unassigned-character');
+	    $('#darth, #yoda, #leia').addClass('enemy-character');
 	    $('#kylo').addClass('selected-character');
 	    $('#darth, #yoda, #leia').appendTo('#enemiesSection');
 	    currentCharacter = starWars.kylo;
 	});
 	$('#characterSection').on('click', '#leia', function() {
-	    $('#yoda, #kylo, #darth, #leia').removeClass('unassigned-character');
-	    $('#yoda #kylo #darth').addClass('enemy-character');
+	    $('#darth, #kylo, #leia, #yoda').removeClass('unassigned-character');
+	    $('#darth, #kylo, #yoda').addClass('enemy-character');
 	    $('#leia').addClass('selected-character');
-	    $('#darth, #yoda, #kylo').appendTo('#enemiesSection');
+	    $('#darth, #kylo, #yoda').appendTo('#enemiesSection');
 	    currentCharacter = starWars.leia;
 	});
 
@@ -112,19 +113,21 @@ $(document).ready(function() {
 	});
 
 	$('#attack').on('click', function() {
-		// alert ('Attack!!!!');
+		('Attack!!!!');
 	    currentEnemy.healthPoints = currentEnemy.healthPoints - currentCharacter.attackPower;
 	    currentCharacter.healthPoints = currentCharacter.healthPoints - currentEnemy.counterAttackPower;
 	    $('.caption-HP', '#defenderSection').html(currentEnemy.healthPoints);
 	    $('.caption-HP', '#characterSection').html(currentCharacter.healthPoints);
-	});
 
 	if (currentCharacter.healthPoints <= 0) {
-		alert ('Game Over!');
-	}
-	else {
-		alert ('Pick a New Defender!');
-	}
+        alert ('Game Over!');
+    }
+    if (currentEnemy.healthPoints <= 0) {
+        alert ('Pick a New Defender!');
+        $('#defenderSection').empty();
+    }
+
+    });
 });
 
 

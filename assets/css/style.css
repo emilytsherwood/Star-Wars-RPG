@@ -2,6 +2,7 @@ body {
 	background-image: url(../images/deathstar.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
+	margin-left: 100px;
 }
 
 .header-style {
@@ -56,7 +57,7 @@ figcaption {
 	text-align: center;
 }
 
-div.caption-HP {
+.caption-HP {
 	font-family: 'Russo One', sans-serif;
 	padding: 5px;
 	text-align: center;
