@@ -1,6 +1,10 @@
 body {
 	background-image: url(../images/deathstar.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
+	/*background-repeat: no-repeat;*/
 	margin-left: 100px;
 }
 
