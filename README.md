@@ -1,4 +1,4 @@
-# week-4-game
+# Star Wars RPG
 
 A simple, yet fun RPG game based on all of your favorite Star Wars characters. Choose your character wisely and defeat all your enemies!
 
